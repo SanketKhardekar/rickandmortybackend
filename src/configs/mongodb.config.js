@@ -1,4 +1,4 @@
-import { DBPASSWORD } from "./token";
+import { DBPASSWORD } from "./token.js";
 
 export const mongoDb={
     DB_PORT:4300,
