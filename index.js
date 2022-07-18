@@ -41,7 +41,9 @@ app.use(express.urlencoded({extended:true}));
 //Routing
 app.use('/api/user',userRoute);
 app.use('/api/favourite',favouriteRoute);
-
+app.all('/',(req,res)=>{
+  res.status(200).json({message:"Success"})
+})
 //Listening To Port
 app.listen(port,()=>{
     logger.info(`Employee Management App Running on port ${port}`);
