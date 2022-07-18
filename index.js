@@ -10,7 +10,10 @@ import favouriteRoute from "./src/routes/favourite.routes.js";
 import logger from "./src/utils/logger.util.js";
 import swaggerDocs from "./swagger.js";
 const app=express();
-const PORT=5000;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5000;
+}
 
 //Mongo Db Connection
 mongoose.connect(mongoDb.DB_URL);
@@ -40,7 +43,7 @@ app.use('/api/user',userRoute);
 app.use('/api/favourite',favouriteRoute);
 
 //Listening To Port
-app.listen(PORT,()=>{
-    logger.info(`Employee Management App Running on port ${PORT}`);
-    swaggerDocs(app,PORT);
+app.listen(port,()=>{
+    logger.info(`Employee Management App Running on port ${port}`);
+    swaggerDocs(app,port);
 })
